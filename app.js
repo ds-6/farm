@@ -43,7 +43,7 @@ app.use(cookieSession({
     var latest = { $set: { newOrder: order} };
     User.findOneAndUpdate({_id:req.user.id},latest)
     .then(result=>{
-      res.json({newOrder:order});
+      res.json({redirect:'/profile'});
     })
    .catch(err=>{
      console.log(err);

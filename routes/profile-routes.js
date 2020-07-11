@@ -66,19 +66,23 @@ router.get('/',authCheck,(req,res)=>{
     const preOrders = JSON.parse(req.user.preOrders[0]);
     const newOrder = JSON.parse(req.user.newOrder[0]);
     const btns= btnArr(preOrders.date,newOrder.date);
-    console.log(btns);
     res.render('profile',{user: req.user,btns:btns});
 
 })
 router.get('/order/:id',authCheck,(req,res)=>{
-        if(req.params.id== "done"){
-            res.render('order',{status:"done"})
+    const status = req.params.id.split('-')[0];
+    const date = req.params.id.split('-')[1];
+    const preOrder = JSON.parse(req.user.preOrders[0]);
+    const nextOrder = JSON.parse(req.user.newOrder[0]);
+
+        if(status== 'done'){
+            res.render('order',{status:"done",date:date,order:preOrder})
         }
-        if(req.params.id== "next"){
-            res.render('order',{status:"next"})
+        if(status== "next"){
+            res.render('order',{status:"next",date:date,order:nextOrder})
         }
-        if(req.params.id== "now"){
-            res.render('order',{status:"now"})
+        if(status== "now"){
+            res.render('order',{status:"now",date:date})
         }
 })
 module.exports = router;

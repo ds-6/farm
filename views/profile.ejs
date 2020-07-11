@@ -38,11 +38,11 @@
                 <div class="date-btns">
                     <% btns.forEach((key)=>{ %>
                         <%if(key.class=="green"){ %>
-                            <a class="btn" href="/profile/order/done"><%= key.date %><span class='green'></span></a>
+                            <a class="btn" href="/profile/order/done-<%=key.date %>"><%= key.date %><span class='green'></span></a>
                         <% }if(key.class=="blue"){%>
-                            <a class="btn" href="/profile/order/next"><%= key.date %><span class='blue'></span></a>
+                            <a class="btn" href="/profile/order/next-<%= key.date%>"><%= key.date %><span class='blue'></span></a>
                         <% }if(key.class==null ){ %>
-                            <a class="btn" href="/profile/order/now"><%= key.date %></a>
+                            <a class="btn" href="/profile/order/now-<%= key.date%>"><%= key.date %></a>
                         <% } %>
                     <%})%>
                     

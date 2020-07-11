@@ -1,7 +1,7 @@
 <%- include('./partials/header.ejs') %>
         <header>
             <div class="order-header content-width">
-                <div class='date-head'>9 July 2020</div>
+                <div class='date-head'><%= date%></div>
             </div>            
         </header>
         <main class='content-width'>
@@ -11,10 +11,20 @@
                         <img src="/photos/milk.jpg" alt="milk" width='50'>
                     </div>
                     <div class="item-detail">Full Cream Milk</div>
-                    <div class="add-remove" value="25">
-                        <span class="remove" value='-1'>-</span>
-                        <span class="item-val milk">0</span>
-                        <span class="add" value='1'>+</span>
+                    <div class="add-remove">                        
+                        <% if(status=="done"){ %>
+                            <span class="remove" aria-disabled="true">-</span>
+                            <span class="item-val milk"><%= order.milk %></span>
+                            <span class="add" aria-disabled="true">+</span>
+                        <% }if(status=='next'){ %>
+                            <span class="remove">-</span>
+                            <span class="item-val milk"><%= order.milk %></span>
+                            <span class="add">+</span>
+                        <% }if(status=='now') { %>
+                            <span class="remove">-</span>
+                            <span class="item-val milk">0</span>
+                            <span class="add">+</span>
+                        <% }%>    
                     </div>
                 </li>
                 <li>
@@ -22,10 +32,20 @@
                         <img src="/photos/lassi.jpg" alt="lassi" width='50'>
                     </div>
                     <div class="item-detail">Amul Chach</div>
-                    <div class="add-remove" value="12">
-                        <span class="remove" value="-1">-</span>
-                        <span class="item-val lassi">0</span>
-                        <span class="add" value="1">+</span>
+                    <div class="add-remove">
+                        <% if(status=="done"){ %>
+                            <span class="remove" aria-disabled="true">-</span>
+                            <span class="item-val lassi"><%= order.lassi %></span>
+                            <span class="add" aria-disabled="true">+</span>
+                        <% }if(status=='next') { %>
+                            <span class="remove">-</span>
+                            <span class="item-val lassi"><%= order.lassi %></span>
+                            <span class="add">+</span>
+                        <% }if(status=='now') { %>
+                            <span class="remove">-</span>
+                            <span class="item-val lassi">0</span>
+                            <span class="add">+</span>
+                        <% }%>    
                     </div>
                 </li>
                 <li>
@@ -33,10 +53,20 @@
                         <img src="/photos/curd.jpg" alt="curd" width='50'>
                     </div>
                     <div class="item-detail">Amul Curd</div>
-                    <div class="add-remove" value="30">
-                        <span class="remove" value="-1">-</span>
-                        <span class="item-val curd">0</span>
-                        <span class="add" value="1">+</span>
+                    <div class="add-remove">
+                        <% if(status=="done"){ %>
+                            <span class="remove" aria-disabled="true">-</span>
+                            <span class="item-val curd"><%= order.curd %></span>
+                            <span class="add" aria-disabled="true">+</span>
+                        <% }if(status=='next') {%>
+                            <span class="remove">-</span>
+                            <span class="item-val curd"><%= order.curd %></span>
+                            <span class="add">+</span>
+                        <% }if(status=='now') {%>
+                            <span class="remove">-</span>
+                            <span class="item-val curd">0</span>
+                            <span class="add">+</span>
+                        <% }%>    
                     </div>
                 </li>
             </ul>
@@ -45,12 +75,22 @@
             <div class="order-footer">
                 <div class="o-left">
                     <div class="total-amount">Total Amount:</div>
-                    <div class="total-value">0</div>
+                    <% if(status=="done"){ %>
+                        <div class="total-value"><%= order.total %></div>
+                    <%} if(status=="next"){ %>
+                        <div class="total-value"><%= order.total %></div>
+                    <%} if(status=="now"){ %>
+                        <div class="total-value">0</div>
+                    <% } %>       
                 </div>
                 <div class="o-right">
-                    <button class="order-update">
-                        Update
-                    </button>
+                    <% if(status=="done"){ %>
+                        <button class="order-update" aria-disabled="true">Update</button>
+                    <%} if(status=="next"){ %>
+                        <button class="order-update">Update</button>
+                    <%} if(status=="now"){ %>
+                        <button class="order-update">Update</button>
+                    <% } %> 
                 </div>
             </div>
         </footer>
@@ -66,7 +106,7 @@
 
             const r_btns = document.querySelectorAll('.remove');
             const a_btns = document.querySelectorAll('.add');
-            var totalSum = 0;
+            var totalSum = parseInt(_fn('.total-value').innerText);
             r_btns.forEach(e => {
                 e.addEventListener('click',remBTN);
             });
@@ -114,15 +154,11 @@
 
             /*******************Udate BTN*************/
             _fn('.order-update').addEventListener('click', (e)=>{
-                const monthArr = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-                const dateOBJ = new Date();
-                const date = dateOBJ.getDate();
-                const month = monthArr[dateOBJ.getMonth()];
                 const orderOBJ = {
                     "milk":_fn('.milk').innerText,
                     "lassi":_fn('.lassi').innerText,
                     "curd":_fn('.curd').innerText,
-                    "date":`${date} ${month}`,
+                    "date":_fn('.date-head').innerText,
                     "total":totalSum
                 };
                 fetch('/order-update',{
@@ -135,7 +171,7 @@
                 })
                 .then(res=>res.json())
                 .then(result=>{
-                    console.log(result);
+                    window.location.href = result.redirect;
                 })
             })
 
