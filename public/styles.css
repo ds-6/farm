@@ -1,0 +1,368 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    margin:0;
+    padding:0;
+    background:#f3f3f3;
+    font-family: Arial, Helvetica, sans-serif;
+}
+ul{
+    padding:0;
+    margin:0;
+    list-style-type: none;
+}
+
+/**************LOG IN Page*********************/
+.login-container{
+    width:350px;
+    height:200px;
+    background:#f3f3f3;
+    margin:50% auto;
+    transform: translateY(-50%);
+    box-shadow:0 0 5px rgba(0,0,0,.3);
+    border-radius:8px;
+    padding:20px;
+}
+.login-container h2{
+    text-align: center;
+}
+.login-div{
+    background: #DB4437;
+    color:#f3f3f3;
+    border-radius:5px;
+    height:50px;
+    width:90%;
+    margin:30px auto;
+    padding-left:20px;
+}
+.login-div .g-login{
+    height: 50px;
+    font-size: 18px;
+    line-height: 49px;
+    display: block;
+    text-decoration: none;
+    color:#f3f3f3;
+}
+.login-div .g-login:before{
+    content: "\f0d5";
+    font-family: 'FontAwesome';
+    display: inline-block;
+    font-size: 22px;
+    padding-right:8px;
+    border-right:1px solid rgba(0,0,0,.07);
+}
+
+
+/*****************Profile Page***************************/
+.content-width{
+    max-width: 576px;
+    margin:0 auto;
+    padding: 20px;
+}
+header .header-content{
+    overflow: hidden;
+    border-bottom: 1px solid rgba(0,0,0,.07);
+    max-height:100px;
+}
+.header-left{
+    width:30%;
+    float:left;
+}
+.header-right{
+    width:70%;
+    float:right;
+    position: relative;
+}
+.header-left .menu-bars{
+    height:40px;
+    width:40px;
+    line-height: 30px;
+    text-align: center;
+    font-size:20px;
+    padding:5px;
+    border: 1px solid rgba(0,0,0,.07);
+    border-radius:4px;
+    cursor: pointer;
+}
+.header-right h1{
+    position: relative;
+    top:10px;
+    left:-35px;
+    font-size:24px;
+}
+.header-right .wallet{
+    min-width:70px;
+    height:40px;
+    line-height: 30px;
+    position:absolute;
+    padding:5px 5px 5px 10px;
+    border-radius:20px;
+    top:0;
+    right:0;    
+    z-index: 9999;
+    border:1px solid rgba(0,0,0,.07);
+}
+
+/****Nav Menu******/
+.nav-menu{
+    min-height: 100%;
+    width:200px;
+    padding:40px 10px 10px 10px;
+    background:#f3f3f3;
+    position:absolute;
+    top:0;
+    left:-200px;
+    background:#d2d2d2;
+    z-index: 99999;    
+    box-shadow: 0 5px 5px rgba(0,0,0,.3);
+}
+.nav-menu.show{
+    display: block;
+    animation: nav .7s forwards;
+}
+.nav-menu .cross{
+    position: absolute;
+    top:10px;
+    right:10px;
+    height: 25px;
+    width:25px;
+    border-radius:15px;
+    box-shadow: 0 0 5px rgba(0,0,0,.1);
+    background:crimson;
+    color:#f3f3f3;
+    line-height: 25px;
+    text-align: center;
+    cursor: pointer;
+}
+.nav-menu .profile{
+    height:150px;
+    height :50px;
+    overflow:hidden;
+    margin-bottom:30px; 
+}
+.nav-menu .profile-image{
+    width: 50px;
+    float:left;
+}
+.nav-menu .profile-image img{
+    display: inline-block;
+    width:50px;
+    height:50px;
+    border-radius:25px;
+    border:1px solid rgba(0,0,0,.07);
+}
+.nav-menu .profile-name{
+    width: 100px;
+    height:50px;
+    line-height: 50px;
+    float:left;
+    text-align: right;
+}
+.nav-menu ul li{
+    height:60px;
+    border-bottom: 1px solid rgba(0,0,0,.07);
+    line-height: 60px;
+    padding-left:10px;
+}
+
+/****Main******/
+main{
+    min-height: 430px;
+}
+.date-btns{
+    overflow: hidden;
+    text-align: center;
+    margin: 20px auto;
+}
+main .date-btns .btn{
+    border:1px solid rgba(0,0,0,.07);
+    width:60px;
+    height:40px;
+    outline:none;
+    text-decoration:none;
+    display: block;
+    color:#212121;
+    line-height: 40px;
+    text-align: center;
+    border-radius:5px;
+    margin-right:10px;
+    margin-bottom:10px;
+    float:left;
+    cursor: pointer;
+    position: relative;
+    background:#ececec;
+}
+main .date-btns .btn span{
+    display:inline-block;
+    width:58px;
+    margin-top: 50px;
+    height:5px;    
+    position: absolute;
+    bottom:0px;
+    left:0;
+    border-radius: 0 0 5px 5px;    
+}
+main .date-btns .btn span.green{
+    background:#065c2a;
+}
+main .date-btns .btn span.blue{
+    background:#0b90c5;
+}
+/****footer section******/
+footer{
+    height:100px;
+    background:#d2d2d2
+}
+.footer-content{
+    overflow: hidden;
+}
+.footer-left{
+    width:50%;
+    float:left;
+}
+.footer-right{
+    width:50%;
+    float:right;
+}
+.footer-left .footer-left-content,.footer-right .footer-right-content{
+    overflow: hidden;
+    width:110px;
+    margin:0 auto;
+}
+.footer-left-content .done-div,.footer-right-content .upcoming-div{
+    width:30px;
+    height:30px;
+    border-radius:4px;
+}
+.footer-left-content .done-div{
+    float:left;
+    border:1px solid #065c2a;
+}
+.footer-left-content .completed,.footer-right-content .upcome{
+    height:30px;
+    width:70px;
+    float:left;
+    margin-left:8px;
+}
+.footer-right-content .upcoming-div{
+    float:left;
+    border:1px solid #0b90c5;
+}
+.footer-left-content .done-div .green{
+    height: 5px;
+    background:#065c2a;
+    margin-top:23px;
+}
+.footer-right-content .upcoming-div .blue{
+    height: 5px;
+    background:#0b90c5;
+    margin-top: 23px;
+}
+
+
+/*****************ORDER NOW Page***************************/
+header .order-header{
+    text-align: center;
+}
+header .order-header .date-head{
+    font-size: 24px;
+}
+main .order-ul li{
+    height:80px;
+    overflow: hidden;   
+    line-height: 70px; 
+    background:#ececec;
+    margin-bottom:7px;
+    box-shadow: 0 0 3px rgba(0,0,0,.2);
+    border-radius:4px;
+    padding:10px;
+}
+main .order-ul li .item-image{
+    width:20%;
+    float:left;
+    margin-top:10px;
+}
+main .order-ul li .item-detail{
+    width:40%;
+    float:left;
+}
+main .order-ul li .add-remove{
+    width:40%;
+    float:right;
+    text-align: center;
+}
+.order-ul .add-remove .remove,.order-ul .add-remove .add{
+    height: 25px;
+    width:25px;
+    border-radius:15px;
+    line-height: 25px;
+    text-align: center;
+    box-shadow: rgba(0,0,0,.1);
+    background:#04581d;
+    color:#f3f3f3;
+    display: inline-block;
+    cursor: pointer;
+    font-size:20px;
+    font-weight: bold;
+}
+.order-ul .add-remove .item-val{
+    width:50px;
+    height: 25px;
+    line-height: 20px;
+    border:1px solid rgba(0,0,0,.07);
+    padding:4px;
+    display: inline-block;
+    text-align: center;
+}
+
+.order-footer{
+    height: 80px;
+    overflow: hidden;
+    background:#d2d2d2;
+}
+.order-footer .o-left{
+    width:50%;
+    height:80px;
+    float:left;
+}
+.order-footer .o-right{
+    width:50%;
+    height:80px;
+    line-height: 80px;;
+    float:right;
+    text-align: right;
+}
+.order-footer .o-left .total-amount,.order-footer .o-left .total-value{
+    height: 35px;
+    line-height: 35px;
+}
+.order-footer .o-left .total-value{
+    border:1px solid rgba(0,0,0,.07);
+    width:60px;
+    text-align: center;
+}
+.order-footer .o-right button{
+    height:40px;
+    width:100px;
+    cursor:pointer;
+    outline:none;
+    border:none;
+    font-size: 20px;
+    text-align: center;
+    line-height: 40px;
+    background:#04581d;
+    color:#f3f3f3;
+    border-radius:20px;
+}
+
+
+
+@keyframes nav {
+    0%{
+        left:-200px;
+    }
+    100%{
+        left:0;
+    }
+}

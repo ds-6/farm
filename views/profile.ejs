@@ -1,0 +1,80 @@
+<%- include('partials/header') %>
+
+        <header>
+            <div class="header-content content-width">
+                <nav class='header-left'>
+                    <div class="menu-bars">
+                        <i class="fa fa-bars" aria-hidden="true"></i>
+                    </div>
+                    <div class="nav-menu">
+                        <div class="cross">
+                            <i class="fa fa-times" aria-hidden="true"></i>
+                        </div>
+                        <div class="profile">
+                            <div class="profile-image"><img src="<%= user.thumbnail %>" alt="profile-image"></div>
+                            <div class="profile-name"><%= user.username %></div>
+                        </div>
+                        <ul>
+                            <li>Your orders</li>
+                            <li>Wallet</li>
+                            <li>Logout</li>
+                        </ul>
+                    </div>
+                </nav>
+                <div class="header-right">
+                    <h1>Book your milk</h1>
+                    <div class="wallet">
+                        <i class='fas fa-wallet'></i>
+                        <span class="wallet-amount">1500</span>
+                    </div>                    
+                </div>
+            </div>
+        </header>
+
+
+        <main>
+            <div class="main-content content-width">
+                <h3>Choose a date to order.</h3>
+                <div class="date-btns">
+                    <% btns.forEach(key=>{ %>
+                        <%if(key.class=="green"){ %>
+                            <a class="btn" href="#"><%= key.date %><span class='green'></span></a>
+                        <% } if(key.class=="blue"){%>
+                            <a class="btn" href="#"><%= key.date %><span class='blue'></span></a>
+                        <% } else{%>
+                            <a class="btn" href="#"><%= key.date %></a>
+                        <% } %>
+                  <%  })%>
+                    
+                </div>
+            </div>
+        </main>
+
+
+        <footer>
+            <div class="footer-content content-width">
+                <div class="footer-left">
+                    <div class="footer-left-content">
+                        <div class="done-div">
+                            <div class="green">
+    
+                            </div>
+                        </div>
+                        <div class='completed'>delieverd</div>
+                    </div>                    
+                </div>
+                
+                <div class="footer-right">
+                    <div class="footer-right-content">
+                        <div class="upcoming-div">
+                            <div class="blue">
+    
+                            </div>
+                        </div>
+                        <div class='upcome'>upcoming</div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <script src="/main.js"></script>
+       <%- include('partials/footer') %>
