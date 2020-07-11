@@ -36,15 +36,15 @@
             <div class="main-content content-width">
                 <h3>Choose a date to order.</h3>
                 <div class="date-btns">
-                    <% btns.forEach(key=>{ %>
+                    <% btns.forEach((key)=>{ %>
                         <%if(key.class=="green"){ %>
-                            <a class="btn" href="#"><%= key.date %><span class='green'></span></a>
-                        <% } if(key.class=="blue"){%>
-                            <a class="btn" href="#"><%= key.date %><span class='blue'></span></a>
-                        <% } else{%>
-                            <a class="btn" href="#"><%= key.date %></a>
+                            <a class="btn" href="/profile/order/done"><%= key.date %><span class='green'></span></a>
+                        <% }if(key.class=="blue"){%>
+                            <a class="btn" href="/profile/order/next"><%= key.date %><span class='blue'></span></a>
+                        <% }if(key.class==null ){ %>
+                            <a class="btn" href="/profile/order/now"><%= key.date %></a>
                         <% } %>
-                  <%  })%>
+                    <%})%>
                     
                 </div>
             </div>

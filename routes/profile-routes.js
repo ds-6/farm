@@ -19,7 +19,7 @@ function btnArr(preDate,nextDate){
     const dateObj = new Date();
     var _d = dateObj.getDate();
     var _m = dateObj.getMonth();
-    for(var i =0;i<15;i++){
+    for(var i =0;i<20;i++){
         if(_d>28 && _m==1){
             _d=1;
             _m++
@@ -51,7 +51,8 @@ function btnArr(preDate,nextDate){
               break;
             default:
                 btn = {
-                    "date":newDate
+                    "date":newDate,
+                    "class":null
                 };
           }
         _d++;
@@ -69,7 +70,15 @@ router.get('/',authCheck,(req,res)=>{
     res.render('profile',{user: req.user,btns:btns});
 
 })
-router.get('/order-now',authCheck,(req,res)=>{
-    res.render('order-now');
+router.get('/order/:id',authCheck,(req,res)=>{
+        if(req.params.id== "done"){
+            res.render('order',{status:"done"})
+        }
+        if(req.params.id== "next"){
+            res.render('order',{status:"next"})
+        }
+        if(req.params.id== "now"){
+            res.render('order',{status:"now"})
+        }
 })
 module.exports = router;

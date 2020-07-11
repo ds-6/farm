@@ -1,0 +1,144 @@
+<%- include('./partials/header.ejs') %>
+        <header>
+            <div class="order-header content-width">
+                <div class='date-head'>9 July 2020</div>
+            </div>            
+        </header>
+        <main class='content-width'>
+            <ul class='order-ul'>
+                <li>
+                    <div class="item-image">
+                        <img src="/photos/milk.jpg" alt="milk" width='50'>
+                    </div>
+                    <div class="item-detail">Full Cream Milk</div>
+                    <div class="add-remove" value="25">
+                        <span class="remove" value='-1'>-</span>
+                        <span class="item-val milk">0</span>
+                        <span class="add" value='1'>+</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="item-image">
+                        <img src="/photos/lassi.jpg" alt="lassi" width='50'>
+                    </div>
+                    <div class="item-detail">Amul Chach</div>
+                    <div class="add-remove" value="12">
+                        <span class="remove" value="-1">-</span>
+                        <span class="item-val lassi">0</span>
+                        <span class="add" value="1">+</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="item-image">
+                        <img src="/photos/curd.jpg" alt="curd" width='50'>
+                    </div>
+                    <div class="item-detail">Amul Curd</div>
+                    <div class="add-remove" value="30">
+                        <span class="remove" value="-1">-</span>
+                        <span class="item-val curd">0</span>
+                        <span class="add" value="1">+</span>
+                    </div>
+                </li>
+            </ul>
+        </main>
+        <footer class='content-width'>
+            <div class="order-footer">
+                <div class="o-left">
+                    <div class="total-amount">Total Amount:</div>
+                    <div class="total-value">0</div>
+                </div>
+                <div class="o-right">
+                    <button class="order-update">
+                        Update
+                    </button>
+                </div>
+            </div>
+        </footer>
+
+  
+        <script>
+            /*******************global function*************/
+            function _fn(id){
+                return document.querySelector(id);
+            }
+
+             /*******************Adding Listener to BTNS*************/
+
+            const r_btns = document.querySelectorAll('.remove');
+            const a_btns = document.querySelectorAll('.add');
+            var totalSum = 0;
+            r_btns.forEach(e => {
+                e.addEventListener('click',remBTN);
+            });
+            a_btns.forEach(e => {
+                e.addEventListener('click',addBTN);
+            });
+
+            /*******************Fn for price value*************/
+             function getPrice(el){
+                 let price;
+                const text = el.target.parentNode.previousElementSibling.innerText;
+                if(text=="Full Cream Milk"){
+                    price = 25
+                }
+                if(text=="Amul Chach"){
+                    price = 12
+                }
+                if(text=="Amul Curd"){
+                    price = 30
+                }
+                return price;
+             }
+             /*******************Working Of Add/Remove BTNS*************/
+
+            function remBTN(e){
+                let price = getPrice(e);
+                const nextEle = e.target.nextElementSibling;
+                var val = parseInt(nextEle.innerText);
+                if(val>0){
+                    val--;
+                    nextEle.innerText=val;
+                    totalSum-=price;
+                    _fn('.total-value').innerText = totalSum;
+                }
+            };
+            function addBTN(e){
+                let price = getPrice(e);
+                const preEle = e.target.previousElementSibling;
+                var val = parseInt(preEle.innerText);
+                val++;
+                preEle.innerText = val;
+                totalSum+=price;
+                _fn('.total-value').innerText = totalSum;
+            };
+
+            /*******************Udate BTN*************/
+            _fn('.order-update').addEventListener('click', (e)=>{
+                const monthArr = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+                const dateOBJ = new Date();
+                const date = dateOBJ.getDate();
+                const month = monthArr[dateOBJ.getMonth()];
+                const orderOBJ = {
+                    "milk":_fn('.milk').innerText,
+                    "lassi":_fn('.lassi').innerText,
+                    "curd":_fn('.curd').innerText,
+                    "date":`${date} ${month}`,
+                    "total":totalSum
+                };
+                fetch('/order-update',{
+                    method:'POST',
+                    credentials: 'include',
+                    headers:{
+                        'Content-Type':'application/json'
+                    },
+                    body:JSON.stringify(orderOBJ)
+                })
+                .then(res=>res.json())
+                .then(result=>{
+                    console.log(result);
+                })
+            })
+
+
+        </script>
+        <%- include('./partials/footer.ejs') %>  

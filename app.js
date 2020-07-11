@@ -4,7 +4,6 @@ const User = require('./models/user');
 const passportSetup = require('./config/passport-setup');
 const cookieSession = require('cookie-session');
 const passport = require('passport');
-//const session = require('express-session');
 const authRoutes = require('./routes/auth-routes');
 const profileRoutes = require('./routes/profile-routes');
 require('dotenv').config();
@@ -23,6 +22,7 @@ mongoose.connect(dbURI,{useNewUrlParser:true,useUnifiedTopology:true})
 app.set('view engine','ejs');
 app.use(express.static('public'));
 app.use(express.urlencoded({extended:true}));
+app.use(express.json());
 
 app.use(cookieSession({
     maxAge:24*60*60*1000,
@@ -38,4 +38,14 @@ app.use(cookieSession({
  app.get('/', (req,res)=>{
    res.redirect('/profile/')
  })
- 
+ app.post('/order-update',(req,res)=>{
+    const order = [JSON.stringify(req.body)];
+    var latest = { $set: { newOrder: order} };
+    User.findOneAndUpdate({_id:req.user.id},latest)
+    .then(result=>{
+      res.json({newOrder:order});
+    })
+   .catch(err=>{
+     console.log(err);
+   })
+ })
