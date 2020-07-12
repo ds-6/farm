@@ -411,6 +411,59 @@ main .order-ul li .add-remove{
     font-size: 15px;
 }
 
+/**************ADMIN Page******************/
+.admin-header{
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+    background:crimson;
+    color: #f3f3f3;
+}
+.admin-header p {
+    margin:0;
+    padding:0;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.user-lists{
+    min-height: 500px;   
+    padding-top:20px;
+
+}
+.user-lists ul{
+    max-width: 576px;    
+    margin : 0 auto;
+}
+.user-lists ul li{
+    height:200px;
+    width: 90%;
+    padding:10px;
+    border-radius: 7px;
+    box-shadow: 0 0 5px rgba(0,0,0,.1);
+    margin: 8px auto;
+    background: #ececec;
+    overflow: hidden;
+}
+.user-lists ul li .user-image{
+    width:30%;
+    float:left;
+}
+.user-lists ul li .user-image img{
+    border-radius: 100%;
+    display: inline-block;
+}
+.user-lists ul li .user-content{
+    width:65%;
+    float: right;
+    text-align: left;
+}
+.user-lists ul li .user-content p{
+    font-size: 13px;
+    border-bottom: 1px solid rgba(0,0,0,.03);
+}
+
+
 
 
 

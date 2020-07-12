@@ -13,10 +13,10 @@ const userSchema = new Schema({
         type:String
     },
     preOrders:{
-        type: Array
+        type: [Object]
     },
     newOrder: {
-        type: Array
+        type: [Object]
     },
     useraddress:{
         type:String,

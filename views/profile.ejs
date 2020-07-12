@@ -15,7 +15,7 @@
                             <div class="profile-name"><%= user.username %></div>
                         </div>
                         <ul>
-                            <li><a href="profile/order/next-<%=paraLink%>">Your orders</a></li>
+                            <li><a href="/profile/order/next-<%=user.newOrder[0].date%>">Your orders</a></li>
                             <li><a href='#'>Wallet</a></li>
                             <li><a href="/auth/logout">Logout</a></li>
                         </ul>

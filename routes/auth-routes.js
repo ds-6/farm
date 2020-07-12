@@ -1,5 +1,9 @@
 const router = require('express').Router();
 const passport = require('passport');
+const User = require('../models/user');
+require('dotenv').config();
+
+
 
 const authCheck =(req,res,next)=>{
     if(req.user){
@@ -10,9 +14,27 @@ const authCheck =(req,res,next)=>{
     }
 }
 
+const authAdmin =(req,res,next)=>{
+    if(!req.user.googleID==process.env.GOOGLE_ADMIN_ID){
+        res.redirect('/profile');
+    }
+    else {
+        next();
+    }
+}
+
 router.get('/login',authCheck,(req, res)=>{
     res.render('login');
 })
+
+router.get('/admin',authAdmin,(req, res)=>{    
+    User.find().sort({updatedAt:-1})
+    .then(result=>{
+        res.render('admin',{users:result});
+    })
+    .catch(err=>console.log(err))
+})
+
 router.get('/logout',(req, res)=>{
     res.send('logout page is here...')
 })

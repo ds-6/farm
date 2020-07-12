@@ -39,7 +39,7 @@ app.use(cookieSession({
    res.redirect('/profile/')
  })
  app.post('/order-update',(req,res)=>{
-    const order = [JSON.stringify(req.body)];
+    const order = req.body;
     var latest = { $set: { newOrder: order} };
     User.findOneAndUpdate({_id:req.user.id},latest)
     .then(result=>{

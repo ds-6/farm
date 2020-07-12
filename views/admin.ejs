@@ -1,0 +1,25 @@
+<%- include('partials/header') %>
+<header class="admin-header">
+    <p>Admin</p>
+</header>
+
+<section class="user-lists">
+    <ul>
+        <% users.forEach(user=>{ %>
+            <li>
+                <div class="user-image">
+                    <img src="<%= user.thumbnail %>" alt="user-image" width='100'>
+                </div>
+                <div class="user-content">
+                    <p>Order Date: <%= user.newOrder[0].date %></p>
+                    <p>Milk: <%= user.newOrder[0].milk %></p>
+                    <p>Lassi: <%= user.newOrder[0].lassi %></p>
+                    <p>Curd: <%= user.newOrder[0].curd %></p>
+                    <p>Total: <%= user.newOrder[0].total %></p>
+                    <p>Address: <%= user.useraddress %></p>
+                </div>
+            </li>
+        <% }) %>        
+    </ul>
+</section>
+<%- include('partials/footer') %>

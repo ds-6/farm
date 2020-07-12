@@ -61,19 +61,20 @@ function btnArr(preDate,nextDate){
 }
 
 
-router.get('/',authCheck,(req,res)=>{
-    const preOrders = JSON.parse(req.user.preOrders[0]);
-    const newOrder = JSON.parse(req.user.newOrder[0]);
+router.get('/',authCheck,(req,res)=>{    
+    const preOrders = req.user.preOrders[0];
+    const newOrder = req.user.newOrder[0];
     const paraLink = newOrder.date;
     const btns= btnArr(preOrders.date,newOrder.date);
-    res.render('profile',{user: req.user,btns:btns,paraLink:paraLink});
+    //res.render('profile',{user: req.user,btns:btns,paraLink:paraLink});
+    res.render('profile',{user: req.user,btns:btns})
 
 })
 router.get('/order/:id',authCheck,(req,res)=>{
     const status = req.params.id.split('-')[0];
     const date = req.params.id.split('-')[1];
-    const preOrder = JSON.parse(req.user.preOrders[0]);
-    const nextOrder = JSON.parse(req.user.newOrder[0]);
+    const preOrder = req.user.preOrders[0];
+    const nextOrder = req.user.newOrder[0];
 
         if(status== 'done'){
             res.render('order',{status:"done",date:date,order:preOrder})
