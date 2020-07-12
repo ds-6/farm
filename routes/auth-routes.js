@@ -36,7 +36,8 @@ router.get('/admin',authAdmin,(req, res)=>{
 })
 
 router.get('/logout',(req, res)=>{
-    res.send('logout page is here...')
+    req.logOut();
+    res.redirect('/');
 })
 router.get('/google', passport.authenticate('google',{
     scope:['profile']
