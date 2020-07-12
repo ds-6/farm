@@ -13,6 +13,24 @@ ul{
     margin:0;
     list-style-type: none;
 }
+.crimsonBTN{
+    cursor: pointer;
+    text-decoration: none;
+    width:100px;
+    height: 40px;
+    line-height: 30px;
+    padding:5px;
+    color:#f3f3f3;
+    background: #dc143c;
+    box-shadow: rgba(0,0,0,.2);
+    text-align: center;
+    margin-top:30px;
+    outline:none;
+    border:none;
+    display: inline-block;
+    border-radius:20px;
+    font-size: 15px;
+}
 
 /**************LOG IN Page*********************/
 .login-container{
@@ -140,7 +158,8 @@ header .header-content{
     height:150px;
     height :50px;
     overflow:hidden;
-    margin-bottom:30px; 
+    margin-bottom:30px;
+    cursor: pointer;
 }
 .nav-menu .profile-image{
     width: 50px;
@@ -271,7 +290,65 @@ footer{
     margin-top: 23px;
 }
 
-
+.profile-div{
+    width:350px;
+    height:400px;
+    background:#eee;
+    box-shadow: 0 0 5px rgba(0,0,0,.2);
+    border-radius:5px;
+    position:absolute;
+    top:20%;
+    left:50%;
+    transform: translateX(-50%);
+    z-index: 9999;
+    padding:10px;
+    display: none;
+    opacity: 0;
+}
+.profile-div .crossBTN{
+    position: absolute;
+    top:10px;
+    right:10px;
+    height: 25px;
+    width:25px;
+    border-radius:15px;
+    box-shadow: 0 0 5px rgba(0,0,0,.1);
+    background:crimson;
+    color:#f3f3f3;
+    line-height: 25px;
+    text-align: center;
+    cursor: pointer;
+}
+.profile-div.show{
+    display: block;
+    transition: all .6s ease;
+    animation: display-msg 1s forwards;
+}
+.profile-div div{
+    width:90%;
+    margin:15px auto;    
+}
+.profile-div .userImage{
+    width:80px;
+    height:80px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.profile-div .userImage img{
+    border-radius: 50%;    
+    box-shadow: 0 0 3px rgba(0,0,0,.1);
+}
+.profile-div textarea{
+    background:#f3f3f3;
+    margin-top:10px;
+    border:1px solid rgba(0,0,0,.03);
+    border-radius: 8px;
+    padding:5px;
+    outline:none;
+}
+.profile-div .btn-save{
+    text-align: center;
+}
 /*****************ORDER NOW Page***************************/
 header .order-header{
     text-align: center;
@@ -392,24 +469,7 @@ main .order-ul li .add-remove{
     transition: all .4s ease;
     animation: display-msg .8s forwards;
 }
-.update-msg-wrapper a{
-    cursor: pointer;
-    text-decoration: none;
-    width:100px;
-    height: 40px;
-    line-height: 30px;
-    padding:5px;
-    color:#f3f3f3;
-    background: #dc143c;
-    box-shadow: rgba(0,0,0,.2);
-    text-align: center;
-    margin-top:30px;
-    outline:none;
-    border:none;
-    display: inline-block;
-    border-radius:20px;
-    font-size: 15px;
-}
+
 
 /**************ADMIN Page******************/
 .admin-header{
@@ -478,7 +538,7 @@ main .order-ul li .add-remove{
 		opacity: 1;
 		transform: scale(1);
         -webkit-transform: scale(1);
-        top:30%;
+        top:20%;
         left:50%;
         transform: translateY(-50%);
         transform: translateX(-50%);

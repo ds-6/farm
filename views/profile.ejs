@@ -76,5 +76,23 @@
                 </div>
             </div>
         </footer>
+        <div class="profile-div">
+            <i class="fa fa-times crossBTN" aria-hidden="true"></i>
+            <div class="userImage">
+                <img src="<%= user.thumbnail%>" alt="user-image" width='80'>
+            </div>
+            <div class="userName">Name: <%= user.username %></div>
+            <div class="userAddress">
+                <label for="address">Address:</label>
+                <%if(user.useraddress){ %>
+                    <textarea name="address" id="address" cols="30" rows="5"><%= user.useraddress%></textarea>
+                <% } else{ %>
+                    <textarea name="address" id="address" cols="30" rows="5" placeholder="Enter your address..."></textarea>
+                <%}%> 
+            </div>
+            <div class="btn-save">
+                <a href="#" class="save-address crimsonBTN">Save</a>
+            </div>
+        </div>
         <script src="/main.js"></script>
        <%- include('partials/footer') %>
