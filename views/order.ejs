@@ -13,9 +13,9 @@
                     <div class="item-detail">Full Cream Milk</div>
                     <div class="add-remove">                        
                         <% if(status=="done"){ %>
-                            <span class="remove" aria-disabled="true">-</span>
+                            <span class="remove disabled">-</span>
                             <span class="item-val milk"><%= order.milk %></span>
-                            <span class="add" aria-disabled="true">+</span>
+                            <span class="add disabled">+</span>
                         <% }if(status=='next'){ %>
                             <span class="remove">-</span>
                             <span class="item-val milk"><%= order.milk %></span>
@@ -34,9 +34,9 @@
                     <div class="item-detail">Amul Chach</div>
                     <div class="add-remove">
                         <% if(status=="done"){ %>
-                            <span class="remove" aria-disabled="true">-</span>
+                            <span class="remove disabled">-</span>
                             <span class="item-val lassi"><%= order.lassi %></span>
-                            <span class="add" aria-disabled="true">+</span>
+                            <span class="add disabled">+</span>
                         <% }if(status=='next') { %>
                             <span class="remove">-</span>
                             <span class="item-val lassi"><%= order.lassi %></span>
@@ -55,9 +55,9 @@
                     <div class="item-detail">Amul Curd</div>
                     <div class="add-remove">
                         <% if(status=="done"){ %>
-                            <span class="remove" aria-disabled="true">-</span>
+                            <span class="remove disabled">-</span>
                             <span class="item-val curd"><%= order.curd %></span>
-                            <span class="add" aria-disabled="true">+</span>
+                            <span class="add disabled">+</span>
                         <% }if(status=='next') {%>
                             <span class="remove">-</span>
                             <span class="item-val curd"><%= order.curd %></span>
@@ -85,7 +85,7 @@
                 </div>
                 <div class="o-right">
                     <% if(status=="done"){ %>
-                        <button class="order-update" aria-disabled="true">Update</button>
+                        <button class="order-update disabled">Update</button>
                     <%} if(status=="next"){ %>
                         <button class="order-update">Update</button>
                     <%} if(status=="now"){ %>
@@ -95,12 +95,23 @@
             </div>
         </footer>
 
+        <div class="update-msg-wrapper">
+            <p class="msg">
+                Wow! Your order has been placed.
+            </p>
+            <a class="go-back-home" href="/profile">
+                <i class="fa fa-home" aria-hidden="true"></i>
+                Home
+            </a>
+        </div>
   
         <script>
             /*******************global function*************/
             function _fn(id){
                 return document.querySelector(id);
             }
+
+              
 
              /*******************Adding Listener to BTNS*************/
 
@@ -143,6 +154,7 @@
                 }
             };
             function addBTN(e){
+                _fn('.order-update').style.opacity= "1";
                 let price = getPrice(e);
                 const preEle = e.target.previousElementSibling;
                 var val = parseInt(preEle.innerText);
@@ -154,27 +166,37 @@
 
             /*******************Udate BTN*************/
             _fn('.order-update').addEventListener('click', (e)=>{
-                const orderOBJ = {
-                    "milk":_fn('.milk').innerText,
-                    "lassi":_fn('.lassi').innerText,
-                    "curd":_fn('.curd').innerText,
-                    "date":_fn('.date-head').innerText,
-                    "total":totalSum
-                };
-                fetch('/order-update',{
-                    method:'POST',
-                    credentials: 'include',
-                    headers:{
-                        'Content-Type':'application/json'
-                    },
-                    body:JSON.stringify(orderOBJ)
-                })
-                .then(res=>res.json())
-                .then(result=>{
-                    window.location.href = result.redirect;
-                })
+                if(totalSum>0){
+                    const orderOBJ = {
+                        "milk":_fn('.milk').innerText,
+                        "lassi":_fn('.lassi').innerText,
+                        "curd":_fn('.curd').innerText,
+                        "date":_fn('.date-head').innerText,
+                        "total":totalSum
+                    };
+                    fetch('/order-update',{
+                        method:'POST',
+                        credentials: 'include',
+                        headers:{
+                            'Content-Type':'application/json'
+                        },
+                        body:JSON.stringify(orderOBJ)
+                    })
+                    .then(res=>res.json())
+                    .then(result=>{
+                        _fn('.update-msg-wrapper').classList.add('show');
+                    })
+                }
             })
-
+            
+            /************DISABLE Elements*************/
+            const disables = document.querySelectorAll('.disabled');
+            if(disables){
+                disables.forEach(e=>{
+                    e.style.display= "none";
+                    
+                })
+            }
 
         </script>
         <%- include('./partials/footer.ejs') %>  

@@ -5,6 +5,7 @@ body{
     margin:0;
     padding:0;
     background:#f3f3f3;
+    color:#444;
     font-family: Arial, Helvetica, sans-serif;
 }
 ul{
@@ -160,15 +161,25 @@ header .header-content{
     text-align: right;
 }
 .nav-menu ul li{
-    height:60px;
     border-bottom: 1px solid rgba(0,0,0,.07);
+}
+.nav-menu ul li a{
+    text-align: none;
+    text-decoration: none;
+    height:60px;    
     line-height: 60px;
     padding-left:10px;
+    display: block;
+    color:#444;
 }
-
 /****Main******/
 main{
     min-height: 430px;
+}
+.main-content h3{
+    border-left:4px solid #dc143c;
+    padding-left:4px;
+    margin-bottom: 40px;
 }
 .date-btns{
     overflow: hidden;
@@ -354,9 +365,72 @@ main .order-ul li .add-remove{
     background:#04581d;
     color:#f3f3f3;
     border-radius:20px;
+    opacity: .3;
 }
 
 
+/***************Update MSG Wrapper*******************/
+.update-msg-wrapper{
+    position:absolute;
+    width:200px;
+    height: 200px;
+    top:30%;
+    left:50%;
+    transform: translateY(-50%);
+    transform: translateX(-50%);
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 0 5px rgba(0,0,0,.3);
+    border-radius: 5px;
+    background:#ececec;
+    z-index: 9999;
+    opacity: 0;
+    display: none;
+}
+.update-msg-wrapper.show{
+    display:block;
+    transition: all .4s ease;
+    animation: display-msg .8s forwards;
+}
+.update-msg-wrapper a{
+    cursor: pointer;
+    text-decoration: none;
+    width:100px;
+    height: 40px;
+    line-height: 30px;
+    padding:5px;
+    color:#f3f3f3;
+    background: #dc143c;
+    box-shadow: rgba(0,0,0,.2);
+    text-align: center;
+    margin-top:30px;
+    outline:none;
+    border:none;
+    display: inline-block;
+    border-radius:20px;
+    font-size: 15px;
+}
+
+
+
+
+@keyframes display-msg {
+	0% {
+		opacity: 0;
+		transform: scale(0);
+        -webkit-transform: scale(0);
+	}
+
+	100% {
+		opacity: 1;
+		transform: scale(1);
+        -webkit-transform: scale(1);
+        top:30%;
+        left:50%;
+        transform: translateY(-50%);
+        transform: translateX(-50%);
+	}
+}
 
 @keyframes nav {
     0%{

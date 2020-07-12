@@ -12,7 +12,6 @@ const authCheck =(req,res,next)=>{
 
 /***********Get BTNS Array**************/
 function btnArr(preDate,nextDate){
-    console.log(`${preDate} and ${nextDate}`)
     const btnArr = [];
     const _mon = [0,2,4,6,7,9,11]
     const monthArr = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
@@ -65,8 +64,9 @@ function btnArr(preDate,nextDate){
 router.get('/',authCheck,(req,res)=>{
     const preOrders = JSON.parse(req.user.preOrders[0]);
     const newOrder = JSON.parse(req.user.newOrder[0]);
+    const paraLink = newOrder.date;
     const btns= btnArr(preOrders.date,newOrder.date);
-    res.render('profile',{user: req.user,btns:btns});
+    res.render('profile',{user: req.user,btns:btns,paraLink:paraLink});
 
 })
 router.get('/order/:id',authCheck,(req,res)=>{

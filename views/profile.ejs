@@ -15,14 +15,14 @@
                             <div class="profile-name"><%= user.username %></div>
                         </div>
                         <ul>
-                            <li>Your orders</li>
-                            <li>Wallet</li>
-                            <li>Logout</li>
+                            <li><a href="profile/order/next-<%=paraLink%>">Your orders</a></li>
+                            <li><a href='#'>Wallet</a></li>
+                            <li><a href="/auth/logout">Logout</a></li>
                         </ul>
                     </div>
                 </nav>
                 <div class="header-right">
-                    <h1>Book your milk</h1>
+                    <h1>Farm Milk</h1>
                     <div class="wallet">
                         <i class='fas fa-wallet'></i>
                         <span class="wallet-amount">1500</span>
