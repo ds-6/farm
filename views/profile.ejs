@@ -15,7 +15,12 @@
                             <div class="profile-name"><%= user.username %></div>
                         </div>
                         <ul>
-                            <li><a href="/profile/order/next-<%=user.newOrder[0].date%>">Your orders</a></li>
+                            <% if(user.newOrder[0]){ %>
+                                <li><a href="/profile/order/next-<%=user.newOrder[0].date%>">Your orders</a></li>
+                            <% } else { %>
+                                <li><a href="#">Your orders</a></li>
+                            <% } %>
+                            
                             <li><a href='#'>Wallet</a></li>
                             <li><a href="/auth/logout">Logout</a></li>
                         </ul>

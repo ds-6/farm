@@ -12,6 +12,7 @@ const authCheck =(req,res,next)=>{
 
 /***********Get BTNS Array**************/
 function btnArr(preDate,nextDate){
+    console.log(`${preDate} and ${nextDate}`)
     const btnArr = [];
     const _mon = [0,2,4,6,7,9,11]
     const monthArr = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
@@ -61,15 +62,32 @@ function btnArr(preDate,nextDate){
 }
 
 
-router.get('/',authCheck,(req,res)=>{    
-    const preOrders = req.user.preOrders[0];
-    const newOrder = req.user.newOrder[0];
-    const paraLink = newOrder.date;
-    const btns= btnArr(preOrders.date,newOrder.date);
-    //res.render('profile',{user: req.user,btns:btns,paraLink:paraLink});
+router.get('/',authCheck,(req,res)=>{   
+    let btns;
+    let preDate;
+    let newDate;
+    if(req.user.preOrders[0]){
+        preDate = req.user.preOrders[0].date;
+    }
+    if(req.user.newOrder[0]){
+       newDate = req.user.newOrder[0].date;
+    }
+    if(req.user.preOrders[0] && req.user.newOrder[0]){
+        btns= btnArr(preDate,newDate);
+    }
+    
+    if(!preDate){
+            preDate= "hell"
+        }
+     if(!newDate){
+            newDate ="hell"
+    }      
+    btns= btnArr(preDate,newDate);
     res.render('profile',{user: req.user,btns:btns})
 
 })
+
+
 router.get('/order/:id',authCheck,(req,res)=>{
     const status = req.params.id.split('-')[0];
     const date = req.params.id.split('-')[1];

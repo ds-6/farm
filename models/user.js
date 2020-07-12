@@ -20,7 +20,7 @@ const userSchema = new Schema({
     },
     useraddress:{
         type:String,
-        default:"no-address"
+        default:"Update your address"
     }
 },{timestamps:true});
 
