@@ -49,3 +49,14 @@ app.use(cookieSession({
      console.log(err);
    })
  })
+
+ app.post('/save-address',(req,res)=>{ 
+    var latest = { $set: { useraddress:req.body.address} };
+    User.findOneAndUpdate({_id:req.user.id},latest)
+    .then(result=>{
+      res.json({redirect:'/profile'});
+    })
+  .catch(err=>{
+    console.log(err);
+  })
+})

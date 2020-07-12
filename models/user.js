@@ -20,7 +20,7 @@ const userSchema = new Schema({
     },
     useraddress:{
         type:String,
-        default:"#E402, Noida"
+        default:"no-address"
     }
 },{timestamps:true});
 
