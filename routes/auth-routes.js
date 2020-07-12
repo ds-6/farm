@@ -15,11 +15,11 @@ const authCheck =(req,res,next)=>{
 }
 
 const authAdmin =(req,res,next)=>{
-    if(!req.user.googleID==process.env.GOOGLE_ADMIN_ID){
-        res.redirect('/profile');
+    if(req.user.googleID==process.env.GOOGLE_ADMIN_ID){
+        next();
     }
     else {
-        next();
+        res.redirect('/profile');
     }
 }
 
