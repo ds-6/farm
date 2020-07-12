@@ -40,7 +40,7 @@ header{
 /**************LOG IN Page*********************/
 .login-container{
     width:350px;
-    height:200px;
+    height:300px;
     background:#f3f3f3;
     margin:50% auto;
     transform: translateY(-50%);
@@ -50,6 +50,13 @@ header{
 }
 .login-container h2{
     text-align: center;
+}
+.login-container .logo{
+    text-align: center;
+}
+.login-container .logo img{
+    border-radius: 50%;
+    box-shadow: 0 0 5px rgba(0,0,0,.3);
 }
 .login-div{
     background: #DB4437;
