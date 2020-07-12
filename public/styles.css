@@ -181,6 +181,8 @@ header .header-content{
     overflow:hidden;
     margin-bottom:30px;
     cursor: pointer;
+    box-shadow: 0 0 3px rgba(0,0,0,.1);
+    border-radius: 25px;
 }
 .nav-menu .profile-image{
     width: 50px;
@@ -198,7 +200,8 @@ header .header-content{
     height:50px;
     line-height: 50px;
     float:left;
-    text-align: right;
+    text-align: left;
+    padding-left:5px;
 }
 .nav-menu ul li{
     border-bottom: 1px solid rgba(0,0,0,.07);
