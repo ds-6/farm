@@ -60,3 +60,17 @@ app.use(cookieSession({
     console.log(err);
   })
 })
+
+app.post('/status-update',(req,res)=>{ 
+  const id = req.body.id;
+  const order = req.body.order;
+  console.log(order);
+  var latest = { $set: { preOrders:order},$pop: {newOrder: -1} };
+  User.findOneAndUpdate({_id:id},latest)
+  .then(result=>{
+    res.json({redirect:'/auth/admin'});
+  })
+  .catch(err=>{
+  console.log(err);
+  })
+})

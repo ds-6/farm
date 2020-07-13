@@ -5,21 +5,82 @@
 
 <section class="user-lists">
     <ul>
+        <h3>New Orders</h3>
         <% users.forEach(user=>{ %>
+            <% if(user.newOrder[0]){ %>            
             <li>
+                <div class="status-btn" data-doc="<%= user._id %>">uncomplete</div>
                 <div class="user-image">
                     <img src="<%= user.thumbnail %>" alt="user-image" width='100'>
                 </div>
                 <div class="user-content">
-                    <p>Order Date: <%= user.newOrder[0].date %></p>
-                    <p>Milk: <%= user.newOrder[0].milk %></p>
-                    <p>Lassi: <%= user.newOrder[0].lassi %></p>
-                    <p>Curd: <%= user.newOrder[0].curd %></p>
-                    <p>Total: <%= user.newOrder[0].total %></p>
-                    <p>Address: <%= user.useraddress %></p>
+                        <p>Name: <%= user.username %></p>                   
+                        <p>Date: <span class="date-val" data-doc="<%= user.newOrder[0].date %>"><%= user.newOrder[0].date %></span></p>
+                        <p>Milk: <span class="milk-val" data-doc="<%= user.newOrder[0].milk %>"><%= user.newOrder[0].milk %></span>, Lassi: <span class="lassi-val" data-doc="<%= user.newOrder[0].lassi %>"><%= user.newOrder[0].lassi %></span>, Curd: <span class="curd-val" data-doc="<%= user.newOrder[0].curd %>"><%= user.newOrder[0].curd %></span></p>                   
+                        <p>Amount: <span class="total-val" data-doc="<%= user.newOrder[0].total %>"><%= user.newOrder[0].total %></span> INR</p>
+                        <p>Address: <%= user.useraddress %></p>
                 </div>
             </li>
-        <% }) %>        
+            <% } %>                
+        <% }) %>
+        <h3>Previous Orders</h3>
+        <% users.forEach(user=>{ %>
+            <% if(user.preOrders[0]){ %>
+            <li>
+                <div class="status-btn green" data-doc="<%= user._id %>">complete</div>
+                <div class="user-image">
+                    <img src="<%= user.thumbnail %>" alt="user-image" width='100'>
+                </div>
+                <div class="user-content">
+                        <p>Name: <%= user.username %></p>                   
+                        <p>Date: <%= user.preOrders[0].date %></p>
+                        <p>Milk: <%= user.preOrders[0].milk %>, Lassi: <%= user.preOrders[0].lassi %>, Curd: <%= user.preOrders[0].curd %></p>                    
+                        <p>Amount: <%= user.preOrders[0].total %> INR</p>
+                        <p>Address: <%= user.useraddress %></p>
+                </div>
+            </li>
+            <% } %>                
+        <% }) %>
+                
     </ul>
 </section>
+<script>
+    function _fn(parent,id){
+        return parent.querySelector(id)
+    }
+
+    const statusBtns = document.querySelectorAll('.status-btn');
+    statusBtns.forEach(e=>{
+        e.addEventListener('click',changeStatus);
+    })
+
+    function changeStatus(e){
+        const li = e.target.parentNode;
+        const obj = {
+            'id':e.target.dataset.doc,
+            'order':{
+                'milk':_fn(li,'.milk-val').dataset.doc,
+                'lassi':_fn(li,'.lassi-val').dataset.doc,
+                'curd':_fn(li,'.curd-val').dataset.doc,
+                'total':_fn(li,'.total-val').dataset.doc,
+                'date':_fn(li,'.date-val').dataset.doc
+            }
+        }
+        console.log(obj);
+
+        fetch('/status-update',{
+            method:'POST',
+            credentials: 'include',
+            headers:{
+                'Content-Type':'application/json'
+            },
+            body:JSON.stringify(obj)
+        })
+        .then(res=>res.json())
+        .then(result=>{
+            window.location.href= result.redirect;
+        })
+    
+    }
+</script>    
 <%- include('partials/footer') %>

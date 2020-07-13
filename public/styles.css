@@ -516,8 +516,13 @@ main .order-ul li .add-remove{
     max-width: 576px;    
     margin : 0 auto;
 }
+.user-lists ul h3 {
+    padding-left:7px;
+    border-left:4px solid crimson;
+    margin-left:10px;
+}
 .user-lists ul li{
-    height:200px;
+    height:170px;
     width: 90%;
     padding:10px;
     border-radius: 7px;
@@ -525,6 +530,25 @@ main .order-ul li .add-remove{
     margin: 8px auto;
     background: #ececec;
     overflow: hidden;
+    position: relative;
+}
+.status-btn {
+    padding: 5px;
+    background: crimson;
+    display: inline-block;
+    color: #f3f3f3;
+    border-radius: 20px;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: absolute;
+    bottom: 20px;
+    cursor: pointer;
+    left: 20px;
+    z-index: 99999999;
+}
+.status-btn.green{
+    background:#0f8b2a;
 }
 .user-lists ul li .user-image{
     width:30%;
