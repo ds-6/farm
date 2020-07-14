@@ -97,13 +97,24 @@
 
         <div class="update-msg-wrapper">
             <p class="msg">
-                Wow! Your order has been placed.
+               Your order is confirmed.
             </p>
             <a class="go-back-home crimsonBTN" href="/profile">
                 <i class="fa fa-home" aria-hidden="true"></i>
                 Home
             </a>
         </div>
+        <%if (user.useraddress=="update-address"){ %>
+            <div class="update-address-msg">
+                <p class="msg">
+                    Please update your address in profile menu.
+                </p>
+                <a class="go-back-home crimsonBTN" href="/profile">
+                    <i class="fa fa-home" aria-hidden="true"></i>
+                    Home
+                </a>
+            </div>
+        <% } %>
   
         <script>
             /*******************global function*************/
@@ -186,6 +197,7 @@
                     .then(result=>{
                         _fn('.update-msg-wrapper').classList.add('show');
                     })
+                    .catch(err=>console.log(err))
                 }
             })
             

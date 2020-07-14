@@ -20,7 +20,7 @@ const userSchema = new Schema({
     },
     useraddress:{
         type:String,
-        default:"Update your address"
+        default:"update-address"
     },
     wallet:{
         type:Number,

@@ -467,7 +467,7 @@ main .order-ul li .add-remove{
 
 
 /***************Update MSG Wrapper*******************/
-.update-msg-wrapper{
+.update-msg-wrapper,.update-address-msg{
     position:absolute;
     width:300px;
     height: 300px;
@@ -484,9 +484,16 @@ main .order-ul li .add-remove{
     opacity: 0;
     display: none;
 }
+.update-msg-wrapper p,.update-address-msg p{
+    font-weight: bold;
+}
 .update-msg-wrapper.show{
     display:block;
     transition: all .4s ease;
+    animation: display-msg .8s forwards;
+}
+.update-address-msg{
+    display: block;
     animation: display-msg .8s forwards;
 }
 

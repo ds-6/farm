@@ -101,7 +101,7 @@ router.get('/order/:id',authCheck,(req,res)=>{
             res.render('order',{status:"next",date:date,order:nextOrder})
         }
         if(status== "now"){
-            res.render('order',{status:"now",date:date})
+            res.render('order',{status:"now",date:date,user:req.user})
         }
 })
 module.exports = router;
