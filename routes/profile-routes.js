@@ -95,10 +95,10 @@ router.get('/order/:id',authCheck,(req,res)=>{
     const nextOrder = req.user.newOrder[0];
 
         if(status== 'done'){
-            res.render('order',{status:"done",date:date,order:preOrder})
+            res.render('order',{status:"done",date:date,order:preOrder,user:req.user})
         }
         if(status== "next"){
-            res.render('order',{status:"next",date:date,order:nextOrder})
+            res.render('order',{status:"next",date:date,order:nextOrder,user:req.user})
         }
         if(status== "now"){
             res.render('order',{status:"now",date:date,user:req.user})
