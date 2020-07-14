@@ -38,9 +38,14 @@ header{
     box-shadow: 5px 0 5px rgba(0,0,0,.3);
 }
 main{
-    min-height:500px;
+    min-height:400px;
 }
-
+footer{
+    position: absolute;
+    bottom:0;
+    left:0;
+    right:0;
+}
 /**************LOG IN Page*********************/
 .login-container{
     width:350px;
