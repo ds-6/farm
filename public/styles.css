@@ -510,14 +510,15 @@ main .order-ul li .add-remove{
     background:crimson;
     color: #f3f3f3;
     overflow: hidden;
+    text-align: center;
 }
 .homeBTN{
     width: 20%;
     float:left;
-    text-align: right;
     display: block;
-    font-size: 20px;
+    font-size: 25px;
     color: #f3f3f3;
+    border-right:1px solid rgba(0,0,0,.1);
 }
 .admin-header p {
     margin:0;
@@ -526,7 +527,7 @@ main .order-ul li .add-remove{
     font-weight: bold;
     text-transform: uppercase;
     width:80%;
-    float:left;
+    float:left;    
 }
 .user-lists{
     min-height: 500px;   
@@ -555,8 +556,8 @@ main .order-ul li .add-remove{
 }
 .user-lists .wallet{
     position: absolute;
-    top:2px;
-    right:2px;
+    top:4px;
+    right:4px;
     box-shadow: 0 0 5px rgba(0,0,0,.2);
     padding:3px 5px;
     font-size: 11px;
