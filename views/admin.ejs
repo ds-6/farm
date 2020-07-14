@@ -1,5 +1,6 @@
 <%- include('partials/header') %>
 <header class="admin-header">
+    <a href="/profile" class="homeBTN"><i class="fa fa-home" aria-hidden="true"></i></a>
     <p>Admin</p>
 </header>
 
@@ -9,9 +10,13 @@
         <% users.forEach(user=>{ %>
             <% if(user.newOrder[0]){ %>            
             <li>
-                <div class="status-btn" data-doc="<%= user._id %>">uncomplete</div>
+                <div class="status-btn" data-doc="<%= user._id %>">incomplete</div>
+                <div class="wallet">
+                    <i class='fas fa-wallet'></i>
+                    <span class="wallet-amount"><%= user.wallet%></span>
+                </div>
                 <div class="user-image">
-                    <img src="<%= user.thumbnail %>" alt="user-image" width='100'>
+                    <img src="<%= user.thumbnail %>" alt="user-image" width='80'>
                 </div>
                 <div class="user-content">
                         <p>Name: <%= user.username %></p>                   
@@ -27,9 +32,13 @@
         <% users.forEach(user=>{ %>
             <% if(user.preOrders[0]){ %>
             <li>
-                <div class="status-btn green" data-doc="<%= user._id %>">complete</div>
+                <div class='status-green'>complete</div>
+                <div class="wallet">
+                    <i class='fas fa-wallet'></i>
+                    <span class="wallet-amount"><%= user.wallet%></span>
+                </div>
                 <div class="user-image">
-                    <img src="<%= user.thumbnail %>" alt="user-image" width='100'>
+                    <img src="<%= user.thumbnail %>" alt="user-image" width='80'>
                 </div>
                 <div class="user-content">
                         <p>Name: <%= user.username %></p>                   

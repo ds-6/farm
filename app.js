@@ -64,8 +64,8 @@ app.use(cookieSession({
 app.post('/status-update',(req,res)=>{ 
   const id = req.body.id;
   const order = req.body.order;
-  console.log(order);
-  var latest = { $set: { preOrders:order},$pop: {newOrder: -1} };
+  var walletAmount = req.user.wallet - parseInt(req.body.order.total);
+  var latest = { $set: { preOrders:order,wallet:walletAmount},$pop: {newOrder: -1} };
   User.findOneAndUpdate({_id:id},latest)
   .then(result=>{
     res.json({redirect:'/auth/admin'});

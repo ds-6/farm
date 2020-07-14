@@ -23,6 +23,9 @@
                             
                             <li><a href='#'><i class="fas fa-wallet" aria-hidden="true"></i> Wallet</a></li>
                             <li><a href="/auth/logout"><i class="fa fa-sign-out"></i> Logout</a></li>
+                            <%if(user._id=="5f0ab737026fed33545e4023") {%>
+                                <li><a href="/auth/admin"><i class="fa fa-user-circle" aria-hidden="true"></i> Admin</a></li>
+                            <% }%>    
                         </ul>
                     </div>
                 </nav>
@@ -30,7 +33,7 @@
                     <h1>Farm Milk</h1>
                     <div class="wallet">
                         <i class='fas fa-wallet'></i>
-                        <span class="wallet-amount">1500</span>
+                        <span class="wallet-amount"><%= user.wallet%></span>
                     </div>                    
                 </div>
             </div>

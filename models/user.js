@@ -21,6 +21,10 @@ const userSchema = new Schema({
     useraddress:{
         type:String,
         default:"Update your address"
+    },
+    wallet:{
+        type:Number,
+        default:1200
     }
 },{timestamps:true});
 

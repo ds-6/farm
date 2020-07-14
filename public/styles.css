@@ -499,6 +499,15 @@ main .order-ul li .add-remove{
     text-align: center;
     background:crimson;
     color: #f3f3f3;
+    overflow: hidden;
+}
+.homeBTN{
+    width: 20%;
+    float:left;
+    text-align: right;
+    display: block;
+    font-size: 20px;
+    color: #f3f3f3;
 }
 .admin-header p {
     margin:0;
@@ -506,6 +515,8 @@ main .order-ul li .add-remove{
     font-size: 16px;
     font-weight: bold;
     text-transform: uppercase;
+    width:80%;
+    float:left;
 }
 .user-lists{
     min-height: 500px;   
@@ -522,7 +533,7 @@ main .order-ul li .add-remove{
     margin-left:10px;
 }
 .user-lists ul li{
-    height:170px;
+    min-height:170px;
     width: 90%;
     padding:10px;
     border-radius: 7px;
@@ -532,7 +543,17 @@ main .order-ul li .add-remove{
     overflow: hidden;
     position: relative;
 }
-.status-btn {
+.user-lists .wallet{
+    position: absolute;
+    top:2px;
+    right:2px;
+    box-shadow: 0 0 5px rgba(0,0,0,.2);
+    padding:3px 5px;
+    font-size: 11px;
+    border-radius:10px;
+}
+
+.status-btn,.status-green {
     padding: 5px;
     background: crimson;
     display: inline-block;
@@ -544,10 +565,10 @@ main .order-ul li .add-remove{
     position: absolute;
     bottom: 20px;
     cursor: pointer;
-    left: 20px;
+    left: 10px;
     z-index: 99999999;
 }
-.status-btn.green{
+.status-green{
     background:#0f8b2a;
 }
 .user-lists ul li .user-image{
