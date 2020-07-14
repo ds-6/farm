@@ -104,4 +104,10 @@ router.get('/order/:id',authCheck,(req,res)=>{
             res.render('order',{status:"now",date:date,user:req.user})
         }
 })
+
+
+router.get('/user',authCheck,(req,res)=>{
+    res.render('user-profile', {user:req.user})
+})
+
 module.exports = router;

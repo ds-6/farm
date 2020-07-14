@@ -23,7 +23,7 @@
                         <p>Date: <span class="date-val" data-doc="<%= user.newOrder[0].date %>"><%= user.newOrder[0].date %></span></p>
                         <p>Milk: <span class="milk-val" data-doc="<%= user.newOrder[0].milk %>"><%= user.newOrder[0].milk %></span>, Lassi: <span class="lassi-val" data-doc="<%= user.newOrder[0].lassi %>"><%= user.newOrder[0].lassi %></span>, Curd: <span class="curd-val" data-doc="<%= user.newOrder[0].curd %>"><%= user.newOrder[0].curd %></span></p>                   
                         <p>Amount: <span class="total-val" data-doc="<%= user.newOrder[0].total %>"><%= user.newOrder[0].total %></span> INR</p>
-                        <p>Address: <%= user.useraddress %></p>
+                        <p>Address: <%= user.address.flat %>, <%= user.address.sector %>, <%= user.address.pin %></p>
                 </div>
             </li>
             <% } %>                
@@ -45,7 +45,7 @@
                         <p>Date: <%= user.preOrders[0].date %></p>
                         <p>Milk: <%= user.preOrders[0].milk %>, Lassi: <%= user.preOrders[0].lassi %>, Curd: <%= user.preOrders[0].curd %></p>                    
                         <p>Amount: <%= user.preOrders[0].total %> INR</p>
-                        <p>Address: <%= user.useraddress %></p>
+                        <p>Address: <%= user.address.flat %>, <%= user.address.sector %>, <%= user.address.pin %></p>
                 </div>
             </li>
             <% } %>                

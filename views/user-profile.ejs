@@ -1,0 +1,71 @@
+<%- include('partials/header') %>
+<header class="admin-header">
+    <a href="/profile" class="homeBTN"><i class="fa fa-home" aria-hidden="true"></i></a>
+    <p>Profile</p>
+</header>
+<main class="user-profile-wrapper">
+    <div class="userImage">
+        <img src="<%= user.thumbnail%>" alt="user-image" width='100'>
+    </div>
+    <div class="labels">
+        <i class="fa fa-user-circle" aria-hidden="true"></i>
+        <input class="name"  value="<%= user.username%>" readonly/>
+    </div>
+    <% if(user.address){ %>
+        <div class="labels">
+            <i class="fa fa-building" aria-hidden="true"></i>
+            <input class="flat" type="text" placeholder="Flat No. & Society..." value="<%= user.address.flat %>" required/>
+        </div>
+        <div class="labels">
+            <i class="fa fa-building" aria-hidden="true"></i>
+            <input class="sector" type="text" placeholder="Sector & City..." value="<%= user.address.sector %>" required/>
+        </div>
+        <div class="labels">
+            <i class="fa fa-address-book" aria-hidden="true"></i>
+            <input class="pin" type="text" placeholder="PIN Code..." value="<%= user.address.pin%>" required/>
+        </div>
+    <% } else { %>
+        <div class="labels">
+            <i class="fa fa-building" aria-hidden="true"></i>
+            <input class="flat" type="text" placeholder="Flat No. & Society..." required/>
+        </div>
+        <div class="labels">
+            <i class="fa fa-building" aria-hidden="true"></i>
+            <input class="sector" type="text" placeholder="Sector & City..." required/>
+        </div>
+        <div class="labels">
+            <i class="fa fa-address-book" aria-hidden="true"></i>
+            <input class="pin" type="text" placeholder="PIN Code..." required/>
+        </div>
+    <% } %>
+    
+    <button class="btn-save crimsonBTN">Save</button>
+</main>
+<script>
+    /***********ADDRESS Update***********/
+    function _fn(id){
+        return document.querySelector(id);
+    }
+
+
+ _fn('.btn-save').addEventListener('click',(e)=>{
+    let obj = {
+       flat: _fn('.flat').value,
+       sector:_fn('.sector').value,
+       pin: _fn('.pin').value,
+    };
+
+        fetch('/save-address',{
+            method:'POST',
+            credentials: 'include',
+            headers:{
+                'Content-Type':'application/json'
+            },
+            body:JSON.stringify(obj)
+        })
+        .then(res=>res.json())
+        .then(data=>window.location.href=data.redirect)
+        .catch(err=>console.log(err));
+    })
+</script>
+<%- include('partials/footer') %>

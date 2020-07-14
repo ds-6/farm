@@ -15,12 +15,12 @@
                             <div class="profile-name"><%= user.username %></div>
                         </div>
                         <ul>
+                            <li><a href='/profile/user'><i class="fa fa-user-circle" aria-hidden="true"></i> Profile</a></li>
                             <% if(user.newOrder[0]){ %>
                                 <li><a href="/profile/order/next-<%=user.newOrder[0].date%>"><i class="fa fa-shopping-basket" aria-hidden="true"></i> Your orders</a></li>
                             <% } else { %>
                                 <li><a href="#"><i class="fa fa-shopping-basket" aria-hidden="true"></i> Your orders</a></li>
-                            <% } %>
-                            
+                            <% } %>                            
                             <li><a href='#'><i class="fas fa-wallet" aria-hidden="true"></i> Wallet</a></li>
                             <li><a href="/auth/logout"><i class="fa fa-sign-out"></i> Logout</a></li>
                             <%if(user._id=="5f0ab737026fed33545e4023") {%>
@@ -84,23 +84,6 @@
                 </div>
             </div>
         </footer>
-        <div class="profile-div">
-            <i class="fa fa-times crossBTN" aria-hidden="true"></i>
-            <div class="userImage">
-                <img src="<%= user.thumbnail%>" alt="user-image" width='80'>
-            </div>
-            <div class="userName">Name: <%= user.username %></div>
-            <div class="userAddress">
-                <label for="address">Address:</label>
-                <%if(user.useraddress){ %>
-                    <textarea name="address" id="address" cols="30" rows="5"><%= user.useraddress%></textarea>
-                <% } else{ %>
-                    <textarea name="address" id="address" cols="30" rows="5" placeholder="Enter your address..."></textarea>
-                <%}%> 
-            </div>
-            <div class="btn-save">
-                <button class="save-address crimsonBTN">Save</button>
-            </div>
-        </div>
+        
         <script src="/main.js"></script>
        <%- include('partials/footer') %>

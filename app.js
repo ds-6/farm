@@ -51,7 +51,7 @@ app.use(cookieSession({
  })
 
  app.post('/save-address',(req,res)=>{ 
-    var latest = { $set: { useraddress:req.body.address} };
+    var latest = { $set: { address:req.body} };
     User.findOneAndUpdate({_id:req.user.id},latest)
     .then(result=>{
       res.json({redirect:'/profile'});

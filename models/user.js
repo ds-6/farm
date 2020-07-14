@@ -18,9 +18,8 @@ const userSchema = new Schema({
     newOrder: {
         type: [Object]
     },
-    useraddress:{
-        type:String,
-        default:"update-address"
+    address:{
+        type:Object
     },
     wallet:{
         type:Number,
