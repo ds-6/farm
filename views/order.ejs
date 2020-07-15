@@ -88,8 +88,10 @@
                         <button class="order-update disabled">Update</button>
                     <%} if(status=="next"){ %>
                         <button class="order-update">Update</button>
-                    <%} if(status=="now"){ %>
+                    <%} if(status=="now" && date!=cDate ){ %>
                         <button class="order-update">Update</button>
+                    <% } if(status=="now" && date==cDate){ %>                    
+                        <button class="order-update disabled">Update</button>
                     <% } %> 
                 </div>
             </div>

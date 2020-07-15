@@ -1,6 +1,5 @@
 const router = require('express').Router();
 
-
 const authCheck =(req,res,next)=>{
     if(!req.user){
         res.redirect('/auth/login');
@@ -10,12 +9,20 @@ const authCheck =(req,res,next)=>{
     }
 }
 
+const monthArr = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+/*******Get Current Date for Order Pate*********/
+function currentDate(){    
+    const dateObj = new Date();
+    var _d = dateObj.getDate();
+    var _m = monthArr[dateObj.getMonth()];
+    return `${_d} ${_m}`;
+}
+
 /***********Get BTNS Array**************/
 function btnArr(preDate,nextDate){
     console.log(`${preDate} and ${nextDate}`)
     const btnArr = [];
-    const _mon = [0,2,4,6,7,9,11]
-    const monthArr = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    const _mon = [0,2,4,6,7,9,11];    
     const dateObj = new Date();
     var _d = dateObj.getDate();
     var _m = dateObj.getMonth();
@@ -93,7 +100,6 @@ router.get('/order/:id',authCheck,(req,res)=>{
     const date = req.params.id.split('-')[1];
     const preOrder = req.user.preOrders[0];
     const nextOrder = req.user.newOrder[0];
-
         if(status== 'done'){
             res.render('order',{status:"done",date:date,order:preOrder,user:req.user})
         }
@@ -101,7 +107,7 @@ router.get('/order/:id',authCheck,(req,res)=>{
             res.render('order',{status:"next",date:date,order:nextOrder,user:req.user})
         }
         if(status== "now"){
-            res.render('order',{status:"now",date:date,user:req.user})
+            res.render('order',{status:"now",date:date,user:req.user,cDate:currentDate()})
         }
 })
 
