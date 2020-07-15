@@ -314,7 +314,7 @@ main .date-btns .btn span.blue{
 }
 
 
-/**********Profile- Adress Page**************/
+/************************Profile- Adress Page**************/
 .user-profile-wrapper{
     padding:20px;
     width:80%;
@@ -329,6 +329,7 @@ main .date-btns .btn span.blue{
     border-radius: 50%;
     box-shadow: 0 0 5px rgba(0,0,0,.1);
 }
+
 .user-profile-wrapper .labels{
     height: 40px;
     border-radius:20px;
@@ -362,6 +363,9 @@ main .date-btns .btn span.blue{
     outline:none;
     text-transform: capitalize;
     border-radius:0 20px 20px 0;
+}
+.user-profile-wrapper input.name{
+    background: #dbd9d9;
 }
 .user-profile-wrapper input::placeholder{
     color:#c7c0c0;
