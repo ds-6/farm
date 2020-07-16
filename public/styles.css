@@ -1,6 +1,9 @@
 *{
     box-sizing: border-box;
 }
+:root{
+    --mainColor: #dc143c;
+}
 body{
     margin:0;
     padding:0;
@@ -22,7 +25,7 @@ ul{
     line-height: 30px;
     padding:5px;
     color:#f3f3f3;
-    background: #dc143c;
+    background: var(--mainColor);
     box-shadow: rgba(0,0,0,.2);
     text-align: center;
     margin-top:30px;
@@ -33,10 +36,42 @@ ul{
     font-size: 15px;
 }
 header{
-    background: #dc143c;
+    background: var(--mainColor);
     color:#f3f3f3;
     box-shadow: 5px 0 5px rgba(0,0,0,.3);
+    max-height: 80px;
 }
+/*****common for admin and order header*******/
+
+.admin-header,.order-header{
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+    background:var(--mainColor);
+    color: #f3f3f3;
+    overflow: hidden;
+    text-align: center;
+}
+.homeBTN{
+    width: 20%;
+    float:left;
+    display: block;
+    font-size: 25px;
+    color: #f3f3f3;
+    border-right:1px solid rgba(0,0,0,.1);
+}
+.admin-header p,.order-header p{
+    margin:0;
+    padding:0;
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+    width:80%;
+    float:left;
+    text-align: left;
+    padding-left: 25%; 
+}
+
 main{
     padding-bottom:100px;
 }
@@ -48,6 +83,8 @@ footer{
     height:100px;
     background: #d2d2d2;
 }
+
+
 /**************LOG IN Page*********************/
 .login-container{
     width:350px;
@@ -104,8 +141,6 @@ footer{
 }
 header .header-content{
     overflow: hidden;
-    border-bottom: 1px solid rgba(0,0,0,.07);
-    max-height:100px;
 }
 .header-left{
     width:30%;
@@ -183,7 +218,7 @@ header .header-content{
     width:25px;
     border-radius:15px;
     box-shadow: 0 0 5px rgba(0,0,0,.1);
-    background:crimson;
+    background:var(--mainColor);
     color:#f3f3f3;
     line-height: 25px;
     text-align: center;
@@ -231,7 +266,7 @@ header .header-content{
 }
 /*************Main*****************/
 .main-content h3{
-    border-left:4px solid #dc143c;
+    border-left:4px solid var(--mainColor);
     padding-left:4px;
     margin-bottom: 40px;
 }
@@ -350,7 +385,7 @@ main .date-btns .btn span.blue{
     display: block;
     width:20%;
     float:left;
-    background:crimson;
+    background:var(--mainColor);
     color:#f3f3f3;
     font-size: 18px;
     height: 38px;
@@ -383,19 +418,7 @@ main .date-btns .btn span.blue{
 }
 
 
-
-
-
-
-
 /*****************ORDER NOW Page***************************/
-header .order-header{
-    text-align: center;
-    margin-bottom: 20px;
-}
-header .order-header .date-head{
-    font-size: 24px;
-}
 main .order-ul li{
     height:80px;
     overflow: hidden;   
@@ -519,32 +542,7 @@ main .order-ul li .add-remove{
 
 
 /**************ADMIN Page******************/
-.admin-header{
-    height: 60px;
-    line-height: 60px;
-    text-align: center;
-    background:crimson;
-    color: #f3f3f3;
-    overflow: hidden;
-    text-align: center;
-}
-.homeBTN{
-    width: 20%;
-    float:left;
-    display: block;
-    font-size: 25px;
-    color: #f3f3f3;
-    border-right:1px solid rgba(0,0,0,.1);
-}
-.admin-header p {
-    margin:0;
-    padding:0;
-    font-size: 16px;
-    font-weight: bold;
-    text-transform: uppercase;
-    width:80%;
-    float:left;    
-}
+
 .user-lists{
     min-height: 500px;   
     padding-top:20px;
@@ -556,7 +554,7 @@ main .order-ul li .add-remove{
 }
 .user-lists ul h3 {
     padding-left:7px;
-    border-left:4px solid crimson;
+    border-left:4px solid var(--mainColor);
     margin-left:10px;
 }
 .user-lists ul li{
@@ -582,7 +580,7 @@ main .order-ul li .add-remove{
 
 .status-btn,.status-green {
     padding: 5px;
-    background: crimson;
+    background: var(--mainColor);
     display: inline-block;
     color: #f3f3f3;
     border-radius: 20px;
